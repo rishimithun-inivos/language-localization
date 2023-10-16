@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
+import 'package:localization_sample/router/custom_router.dart';
+import 'package:localization_sample/router/route_constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +20,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Localization',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      localizationsDelegates: [],
+      onGenerateRoute: CustomRouter.generatedRoute,
+      initialRoute: homeRoute,
     );
   }
 }
