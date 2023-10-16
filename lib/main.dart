@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localization/flutter_localization.dart';
-import 'package:localization_sample/router/custom_router.dart';
-import 'package:localization_sample/router/route_constants.dart';
+import 'package:localization_sample/home_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Localization',
+      title: 'Flutter Demo',
+      locale: Locale('es'),
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'),
+        Locale('es'),
+      ],
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      localizationsDelegates: [],
-      onGenerateRoute: CustomRouter.generatedRoute,
-      initialRoute: homeRoute,
+      home: HomePage(),
     );
   }
 }
